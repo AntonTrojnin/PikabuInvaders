@@ -5,6 +5,8 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using HtmlAgilityPack;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
 
 namespace PikabuInvaders
 {
@@ -71,7 +73,7 @@ namespace PikabuInvaders
             return result;
         }
 
-        private async void startButton_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
             startButton.Enabled = false;
             if (!Properties.Settings.Default.running)
@@ -80,17 +82,8 @@ namespace PikabuInvaders
 
                 var req = (HttpWebRequest)WebRequest.Create("http://pikabu.ru");
                 req.CookieContainer = CookieContainer;
-
-                using (var res = await req.GetResponseAsync())
-                {
-                    var temp = (HttpWebResponse)res;
-                    using (var read = new StreamReader(res.GetResponseStream()))
-                    {
-                        var responseResult = read.ReadToEnd();
-
-                    }
-                    CookieContainer = req.CookieContainer;
-                }
+                HttpWebResponse TheRespone = (HttpWebResponse)req.GetResponse();
+                CookieContainer.Add(TheRespone.Cookies);
 
                 csrfToken = CookieContainer.GetCookies(new Uri("http://pikabu.ru"))["PHPSESS"].Value;
 
