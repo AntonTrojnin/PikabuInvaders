@@ -5,8 +5,6 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using HtmlAgilityPack;
-using System.Runtime.Serialization.Json;
-using System.Runtime.Serialization;
 
 namespace PikabuInvaders
 {
@@ -157,6 +155,26 @@ namespace PikabuInvaders
             Properties.Settings.Default.password = passBox.Text;
             Properties.Settings.Default.running = false;
             Properties.Settings.Default.Save();
+        }
+
+        private void mainForm_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                notify.Visible = true;
+                notify.ShowBalloonTip(500);
+                this.Hide();
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notify.Visible = false;
+            }
+        }
+
+        private void notify_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }
