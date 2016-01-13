@@ -36,13 +36,19 @@
             this.logBox = new System.Windows.Forms.TextBox();
             this.checkNewPosts = new System.Windows.Forms.Timer(this.components);
             this.notify = new System.Windows.Forms.NotifyIcon(this.components);
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
+            this.settingsMenuitem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(344, 12);
+            this.startButton.Location = new System.Drawing.Point(343, 30);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(78, 25);
+            this.startButton.Size = new System.Drawing.Size(79, 25);
             this.startButton.TabIndex = 2;
             this.startButton.Text = "Старт";
             this.startButton.UseVisualStyleBackColor = true;
@@ -50,7 +56,7 @@
             // 
             // passBox
             // 
-            this.passBox.Location = new System.Drawing.Point(178, 15);
+            this.passBox.Location = new System.Drawing.Point(177, 33);
             this.passBox.Name = "passBox";
             this.passBox.Size = new System.Drawing.Size(160, 20);
             this.passBox.TabIndex = 1;
@@ -58,7 +64,7 @@
             // 
             // loginBox
             // 
-            this.loginBox.Location = new System.Drawing.Point(12, 15);
+            this.loginBox.Location = new System.Drawing.Point(11, 33);
             this.loginBox.Name = "loginBox";
             this.loginBox.Size = new System.Drawing.Size(160, 20);
             this.loginBox.TabIndex = 0;
@@ -66,12 +72,12 @@
             // 
             // logBox
             // 
-            this.logBox.Location = new System.Drawing.Point(12, 44);
+            this.logBox.Location = new System.Drawing.Point(12, 61);
             this.logBox.Multiline = true;
             this.logBox.Name = "logBox";
             this.logBox.ReadOnly = true;
             this.logBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logBox.Size = new System.Drawing.Size(410, 155);
+            this.logBox.Size = new System.Drawing.Size(410, 138);
             this.logBox.TabIndex = 3;
             // 
             // checkNewPosts
@@ -81,11 +87,44 @@
             // 
             // notify
             // 
-            this.notify.BalloonTipText = "Я теперь здесь";
-            this.notify.BalloonTipTitle = "Pikabu Invaders";
             this.notify.Icon = ((System.Drawing.Icon)(resources.GetObject("notify.Icon")));
             this.notify.Text = "Pikabu Invaders";
             this.notify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notify_MouseDoubleClick);
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // mainMenu
+            // 
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsMenuitem,
+            this.aboutMenuItem});
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(434, 24);
+            this.mainMenu.TabIndex = 4;
+            this.mainMenu.Text = "menuStrip1";
+            // 
+            // settingsMenuitem
+            // 
+            this.settingsMenuitem.Name = "settingsMenuitem";
+            this.settingsMenuitem.Size = new System.Drawing.Size(79, 20);
+            this.settingsMenuitem.Text = "Настройки";
+            this.settingsMenuitem.Click += new System.EventHandler(this.settingsMenuitem_Click);
+            // 
+            // aboutMenuItem
+            // 
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.aboutMenuItem.Text = "О программе";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // mainForm
             // 
@@ -96,16 +135,17 @@
             this.Controls.Add(this.loginBox);
             this.Controls.Add(this.passBox);
             this.Controls.Add(this.startButton);
+            this.Controls.Add(this.mainMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(450, 250);
-            this.MinimumSize = new System.Drawing.Size(450, 250);
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pikabu Invaders";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
-            this.Load += new System.EventHandler(this.mainForm_Load);
             this.Resize += new System.EventHandler(this.mainForm_Resize);
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +159,11 @@
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Timer checkNewPosts;
         private System.Windows.Forms.NotifyIcon notify;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip mainMenu;
+        private System.Windows.Forms.ToolStripMenuItem settingsMenuitem;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
     }
 }
 

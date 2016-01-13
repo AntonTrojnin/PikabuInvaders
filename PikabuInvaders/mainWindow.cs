@@ -11,36 +11,54 @@ namespace PikabuInvaders
     public partial class mainForm : Form
     {
         private string csrfToken;
+        // Храним cookie после авторизации для повторного использования
         public static CookieContainer CookieContainer;
 
         public mainForm()
         {
             InitializeComponent();
             CookieContainer = new CookieContainer();
+
+            ContextMenu trayMenu = new ContextMenu();
+            trayMenu.MenuItems.Add("Открыть");
+            trayMenu.MenuItems.Add("Выход", OnExit);
+
+            notify.ContextMenu = trayMenu;
         }
- 
+
+        protected override void OnLoad(EventArgs e)
+        {
+            if (Properties.Settings.Default.login != "")
+            {
+                loginBox.Text = Properties.Settings.Default.login;
+            }
+
+            if (Properties.Settings.Default.password != "")
+            {
+                passBox.Text = Properties.Settings.Default.password;
+            }
+
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                notify.Visible = true;
+                base.OnLoad(e);
+            }
+
+            if (Properties.Settings.Default.running)
+            {
+                // Начинаем атаку!
+                runAttack();
+            }
+        }
+
+        private void OnExit(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void logData(object text)
         {
             logBox.AppendText(text + Environment.NewLine);
-        }
-
-        private void changeStartButtonState()
-        {
-            if (Properties.Settings.Default.running)
-            {
-                checkNewPosts.Enabled = false;
-                Properties.Settings.Default.running = false;
-                logData("Приостанавливаем порабощение мира.");
-                startButton.Text = "Старт";
-            }
-            else
-            {
-                checkNewPosts.Enabled = true;
-                Properties.Settings.Default.running = true;
-                logData("Успешная авторизация.");
-                logData("Начинаем атаку.");
-                startButton.Text = "Стоп";
-            }
         }
 
         private string sendPostRequest(String url, String data = "")
@@ -71,43 +89,66 @@ namespace PikabuInvaders
             return result;
         }
 
-        private void startButton_Click(object sender, EventArgs e)
+        private void runAttack()
         {
             startButton.Enabled = false;
-            if (!Properties.Settings.Default.running)
+            logData("Авторизуемся на pikabu...");
+
+            var req = (HttpWebRequest)WebRequest.Create("http://pikabu.ru");
+            req.CookieContainer = CookieContainer;
+            HttpWebResponse TheRespone = (HttpWebResponse)req.GetResponse();
+            CookieContainer.Add(TheRespone.Cookies);
+            TheRespone.Close();
+
+            csrfToken = CookieContainer.GetCookies(new Uri("http://pikabu.ru"))["PHPSESS"].Value;
+
+            var postData = "mode=login";
+                postData += "&username=" + loginBox.Text;
+                postData += "&password=" + passBox.Text;
+                postData += "&remember=0";
+
+            var result = sendPostRequest("http://pikabu.ru/ajax/auth.php", postData);
+            dynamic data = JsonConvert.DeserializeObject(result);
+
+            if (data.result == false)
             {
-                logData("Авторизуемся на pikabu...");
-
-                var req = (HttpWebRequest)WebRequest.Create("http://pikabu.ru");
-                req.CookieContainer = CookieContainer;
-                HttpWebResponse TheRespone = (HttpWebResponse)req.GetResponse();
-                CookieContainer.Add(TheRespone.Cookies);
-
-                csrfToken = CookieContainer.GetCookies(new Uri("http://pikabu.ru"))["PHPSESS"].Value;
-
-                var postData = "mode=login";
-                    postData += "&username=" + loginBox.Text;
-                    postData += "&password=" + passBox.Text;
-                    postData += "&remember=0";
-
-                var result = sendPostRequest("http://pikabu.ru/ajax/auth.php", postData);
-                dynamic data = JsonConvert.DeserializeObject(result);
-
-                if (data.result == false)
-                {
-                    logData(data.message);
-                }
-                else
-                {
-                    changeStartButtonState();
-                }
+                logData(data.message);
+                stopAttack();
             }
             else
             {
-                changeStartButtonState();
+                checkNewPosts.Enabled = true;
+                Properties.Settings.Default.running = true;
+                logData("Успешная авторизация.");
+                logData("Начинаем атаку.");
+                startButton.Text = "Стоп";
+                loginBox.Enabled = false;
+                passBox.Enabled = false;
             }
 
             startButton.Enabled = true;
+        }
+
+        private void stopAttack()
+        {
+            checkNewPosts.Enabled = false;
+            Properties.Settings.Default.running = false;
+            logData("Приостанавливаем порабощение мира.");
+            startButton.Text = "Старт";
+            loginBox.Enabled = true;
+            passBox.Enabled = true;
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.running)
+            {
+                stopAttack();
+            }
+            else
+            {
+                runAttack();
+            }
         }
 
         private void checkNewPosts_Tick(object sender, EventArgs e)
@@ -136,24 +177,11 @@ namespace PikabuInvaders
             }     
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.login != "")
-            {
-                loginBox.Text = Properties.Settings.Default.login;
-            }
-
-            if (Properties.Settings.Default.password != "")
-            {
-                passBox.Text = Properties.Settings.Default.password;
-            }
-        }
-
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            // Запоминаем введённые пользователем логин и пароль
             Properties.Settings.Default.login = loginBox.Text;
             Properties.Settings.Default.password = passBox.Text;
-            Properties.Settings.Default.running = false;
             Properties.Settings.Default.Save();
         }
 
@@ -162,7 +190,6 @@ namespace PikabuInvaders
             if (FormWindowState.Minimized == this.WindowState)
             {
                 notify.Visible = true;
-                notify.ShowBalloonTip(500);
                 this.Hide();
             }
             else if (FormWindowState.Normal == this.WindowState)
@@ -175,6 +202,19 @@ namespace PikabuInvaders
         {
             this.Show();
             this.WindowState = FormWindowState.Normal;
+            notify.Visible = false;
+        }
+
+        private void settingsMenuitem_Click(object sender, EventArgs e)
+        {
+            settingsForm settings = new settingsForm();
+            settings.Show();
+        }
+
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            aboutForm about = new aboutForm();
+            about.Show();
         }
     }
 }

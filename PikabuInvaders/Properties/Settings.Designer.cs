@@ -58,5 +58,17 @@ namespace PikabuInvaders.Properties {
                 this["running"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool hiddenStart {
+            get {
+                return ((bool)(this["hiddenStart"]));
+            }
+            set {
+                this["hiddenStart"] = value;
+            }
+        }
     }
 }
