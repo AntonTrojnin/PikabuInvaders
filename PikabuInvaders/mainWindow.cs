@@ -209,13 +209,13 @@ namespace PikabuInvaders
         private void settingsMenuitem_Click(object sender, EventArgs e)
         {
             settingsForm settings = new settingsForm();
-            settings.Show();
+            settings.ShowDialog();
         }
 
         private void aboutMenuItem_Click(object sender, EventArgs e)
         {
             aboutForm about = new aboutForm();
-            about.Show();
+            about.ShowDialog();
         }
     }
 }
