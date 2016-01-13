@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt, quisquam modi voluptatem debitis soluta, officiis in molestiae amet corporis cupiditate impedit qui. Illum, odio libero veniam quod illo voluptas dolorem id corporis obcaecati, sit quam molestias architecto dignissimos iusto natus, molestiae nihil aut! Incidunt officia maxime nesciunt suscipit quas, quasi odio possimus laboriosam eligendi eaque amet quod alias numquam nam soluta, sunt ullam provident, nulla excepturi expedita. Sint, itaque, cupiditate. Provident eius ad quibusdam magnam voluptatem accusantium praesentium, dolor repellendus ea aperiam, necessitatibus sequi mollitia enim veniam voluptate pariatur.</value>
+  <data name="emailLabel.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt, quisquam modi voluptatem debitis soluta, officiis in molestiae amet corporis cupiditate impedit qui. Illum, odio libero veniam quod illo voluptas dolorem id corporis obcaecati, sit quam molestias architecto dignissimos iusto natus, molestiae nihil aut! Incidunt officia maxime nesciunt suscipit quas, quasi.</value>
   </data>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

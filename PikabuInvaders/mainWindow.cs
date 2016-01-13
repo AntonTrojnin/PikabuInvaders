@@ -13,6 +13,7 @@ namespace PikabuInvaders
         private string csrfToken;
         // Храним cookie после авторизации для повторного использования
         public static CookieContainer CookieContainer;
+        public bool isRunning;
 
         public mainForm()
         {
@@ -44,7 +45,7 @@ namespace PikabuInvaders
                 base.OnLoad(e);
             }
 
-            if (Properties.Settings.Default.running)
+            if (Properties.Settings.Default.autoAttack)
             {
                 // Начинаем атаку!
                 runAttack();
@@ -118,7 +119,7 @@ namespace PikabuInvaders
             else
             {
                 checkNewPosts.Enabled = true;
-                Properties.Settings.Default.running = true;
+                isRunning = true;
                 logData("Успешная авторизация.");
                 logData("Начинаем атаку.");
                 startButton.Text = "Стоп";
@@ -132,7 +133,7 @@ namespace PikabuInvaders
         private void stopAttack()
         {
             checkNewPosts.Enabled = false;
-            Properties.Settings.Default.running = false;
+
             logData("Приостанавливаем порабощение мира.");
             startButton.Text = "Старт";
             loginBox.Enabled = true;
@@ -141,7 +142,7 @@ namespace PikabuInvaders
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.running)
+            if (isRunning)
             {
                 stopAttack();
             }

@@ -24,6 +24,8 @@ namespace PikabuInvaders
             {
                 hiddenStartBox.Checked = true;
             }
+
+            autoAttackBox.Checked = Properties.Settings.Default.autoAttack;
         }
 
         private void startupBox_CheckedChanged(object sender, System.EventArgs e)
@@ -45,6 +47,11 @@ namespace PikabuInvaders
             checkHiddenStartState();
         }
 
+        private void autoAttackBox_CheckedChanged(object sender, System.EventArgs e)
+        {
+            Properties.Settings.Default.autoAttack = autoAttackBox.Checked;
+        }
+
         private void checkHiddenStartState()
         {
             if (hiddenStartBox.Checked)
@@ -55,6 +62,8 @@ namespace PikabuInvaders
             {
                 rkApp.SetValue("PikabuInvaders", Application.ExecutablePath.ToString());
             }
+
+            Properties.Settings.Default.hiddenStart = hiddenStartBox.Checked;
         }
     }
 }

@@ -50,12 +50,12 @@ namespace PikabuInvaders.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool running {
+        public bool autoAttack {
             get {
-                return ((bool)(this["running"]));
+                return ((bool)(this["autoAttack"]));
             }
             set {
-                this["running"] = value;
+                this["autoAttack"] = value;
             }
         }
         

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace PikabuInvaders
 {
@@ -7,6 +8,11 @@ namespace PikabuInvaders
         public aboutForm()
         {
             InitializeComponent();
+        }
+
+        private void siteLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(siteLabel.Text);
         }
     }
 }
