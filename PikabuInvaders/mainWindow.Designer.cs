@@ -41,6 +41,8 @@
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.settingsMenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkPosts = new System.Windows.Forms.Timer(this.components);
+            this.sendStatistics = new System.Windows.Forms.Timer(this.components);
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,6 +128,16 @@
             this.aboutMenuItem.Text = "О программе";
             this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
+            // checkPosts
+            // 
+            this.checkPosts.Interval = 2000;
+            this.checkPosts.Tick += new System.EventHandler(this.checkPosts_Tick);
+            // 
+            // sendStatistics
+            // 
+            this.sendStatistics.Interval = 10000;
+            this.sendStatistics.Tick += new System.EventHandler(this.sendStatistics_Tick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,7 +154,6 @@
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pikabu Invaders";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
             this.Resize += new System.EventHandler(this.mainForm_Resize);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
@@ -164,6 +175,8 @@
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem settingsMenuitem;
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
+        private System.Windows.Forms.Timer checkPosts;
+        private System.Windows.Forms.Timer sendStatistics;
     }
 }
 

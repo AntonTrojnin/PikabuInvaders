@@ -31,6 +31,9 @@
             this.hiddenStartBox = new System.Windows.Forms.CheckBox();
             this.autoAttackBox = new System.Windows.Forms.CheckBox();
             this.startupBox = new System.Windows.Forms.CheckBox();
+            this.sendStatisticsBox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.saveCredentialsBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // hiddenStartBox
@@ -61,17 +64,50 @@
             this.startupBox.AutoSize = true;
             this.startupBox.Location = new System.Drawing.Point(12, 12);
             this.startupBox.Name = "startupBox";
-            this.startupBox.Size = new System.Drawing.Size(175, 17);
+            this.startupBox.Size = new System.Drawing.Size(180, 17);
             this.startupBox.TabIndex = 1;
-            this.startupBox.Text = "Запускать вместе с Windows";
+            this.startupBox.Text = "Запускать вместе с системой";
             this.startupBox.UseVisualStyleBackColor = true;
             this.startupBox.CheckedChanged += new System.EventHandler(this.startupBox_CheckedChanged);
+            // 
+            // sendStatisticsBox
+            // 
+            this.sendStatisticsBox.AutoSize = true;
+            this.sendStatisticsBox.Location = new System.Drawing.Point(12, 105);
+            this.sendStatisticsBox.Name = "sendStatisticsBox";
+            this.sendStatisticsBox.Size = new System.Drawing.Size(226, 17);
+            this.sendStatisticsBox.TabIndex = 4;
+            this.sendStatisticsBox.Text = "Отправлять информацию о злодеяниях";
+            this.sendStatisticsBox.UseVisualStyleBackColor = true;
+            this.sendStatisticsBox.CheckedChanged += new System.EventHandler(this.sendDataBox_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(27, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(226, 38);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Требуется для участия в топе злодеев на pikabuinvaders.ru";
+            // 
+            // saveCredentialsBox
+            // 
+            this.saveCredentialsBox.AutoSize = true;
+            this.saveCredentialsBox.Location = new System.Drawing.Point(12, 82);
+            this.saveCredentialsBox.Name = "saveCredentialsBox";
+            this.saveCredentialsBox.Size = new System.Drawing.Size(168, 17);
+            this.saveCredentialsBox.TabIndex = 6;
+            this.saveCredentialsBox.Text = "Запоминать логин и пароль";
+            this.saveCredentialsBox.UseVisualStyleBackColor = true;
+            this.saveCredentialsBox.CheckedChanged += new System.EventHandler(this.saveCredentialsBox_CheckedChanged);
             // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(204, 83);
+            this.ClientSize = new System.Drawing.Size(253, 163);
+            this.Controls.Add(this.saveCredentialsBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.sendStatisticsBox);
             this.Controls.Add(this.autoAttackBox);
             this.Controls.Add(this.hiddenStartBox);
             this.Controls.Add(this.startupBox);
@@ -83,6 +119,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.settingsForm_FormClosing);
             this.Load += new System.EventHandler(this.settingsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -93,5 +130,8 @@
         private System.Windows.Forms.CheckBox startupBox;
         private System.Windows.Forms.CheckBox hiddenStartBox;
         private System.Windows.Forms.CheckBox autoAttackBox;
+        private System.Windows.Forms.CheckBox sendStatisticsBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox saveCredentialsBox;
     }
 }
