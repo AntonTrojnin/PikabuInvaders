@@ -8,7 +8,7 @@
     <Setting Name="password" Type="System.String" Scope="User">
       <Value Profile="(Default)">Пароль</Value>
     </Setting>
-    <Setting Name="autoAttack" Type="System.Boolean" Scope="User">
+    <Setting Name="autoStart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="hiddenStart" Type="System.Boolean" Scope="User">

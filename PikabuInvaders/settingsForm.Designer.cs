@@ -32,7 +32,6 @@
             this.autoAttackBox = new System.Windows.Forms.CheckBox();
             this.startupBox = new System.Windows.Forms.CheckBox();
             this.sendStatisticsBox = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.saveCredentialsBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -81,14 +80,6 @@
             this.sendStatisticsBox.UseVisualStyleBackColor = true;
             this.sendStatisticsBox.CheckedChanged += new System.EventHandler(this.sendDataBox_CheckedChanged);
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(27, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(226, 38);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Требуется для участия в топе злодеев на pikabuinvaders.ru";
-            // 
             // saveCredentialsBox
             // 
             this.saveCredentialsBox.AutoSize = true;
@@ -104,9 +95,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(253, 163);
+            this.ClientSize = new System.Drawing.Size(253, 132);
             this.Controls.Add(this.saveCredentialsBox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.sendStatisticsBox);
             this.Controls.Add(this.autoAttackBox);
             this.Controls.Add(this.hiddenStartBox);
@@ -131,7 +121,6 @@
         private System.Windows.Forms.CheckBox hiddenStartBox;
         private System.Windows.Forms.CheckBox autoAttackBox;
         private System.Windows.Forms.CheckBox sendStatisticsBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox saveCredentialsBox;
     }
 }

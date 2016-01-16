@@ -16,7 +16,7 @@ namespace PikabuInvaders
         private void settingsForm_Load(object sender, System.EventArgs e)
         {
             hiddenStartBox.Checked = Properties.Settings.Default.hiddenStart;
-            autoAttackBox.Checked = Properties.Settings.Default.autoAttack;
+            autoAttackBox.Checked = Properties.Settings.Default.autoStart;
             sendStatisticsBox.Checked = Properties.Settings.Default.sendStatistics;
             saveCredentialsBox.Checked = Properties.Settings.Default.saveCredentials;
 
@@ -47,7 +47,7 @@ namespace PikabuInvaders
 
         private void autoAttackBox_CheckedChanged(object sender, System.EventArgs e)
         {
-            Properties.Settings.Default.autoAttack = autoAttackBox.Checked;
+            Properties.Settings.Default.autoStart = autoAttackBox.Checked;
         }
 
         private void checkHiddenStartState()

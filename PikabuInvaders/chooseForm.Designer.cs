@@ -41,7 +41,7 @@
             this.goodForceButton.Name = "goodForceButton";
             this.goodForceButton.Size = new System.Drawing.Size(150, 60);
             this.goodForceButton.TabIndex = 0;
-            this.goodForceButton.Text = "Силы добра";
+            this.goodForceButton.Text = "Лига добра";
             this.goodForceButton.UseVisualStyleBackColor = false;
             this.goodForceButton.Click += new System.EventHandler(this.goodForceButton_Click);
             // 
@@ -55,7 +55,7 @@
             this.forceEvilButton.Name = "forceEvilButton";
             this.forceEvilButton.Size = new System.Drawing.Size(150, 60);
             this.forceEvilButton.TabIndex = 1;
-            this.forceEvilButton.Text = "Силы зла";
+            this.forceEvilButton.Text = "Лига зла";
             this.forceEvilButton.UseVisualStyleBackColor = false;
             this.forceEvilButton.Click += new System.EventHandler(this.forceEvilButton_Click);
             // 

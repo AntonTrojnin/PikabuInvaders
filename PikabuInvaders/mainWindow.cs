@@ -44,7 +44,7 @@ namespace PikabuInvaders
                 base.OnLoad(e);
             }
 
-            if (Properties.Settings.Default.autoAttack) run();
+            if (Properties.Settings.Default.autoStart) run();
         }
 
         private void logData(object text)
