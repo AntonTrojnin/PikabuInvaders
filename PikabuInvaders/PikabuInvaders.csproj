@@ -107,6 +107,12 @@
     <Compile Include="aboutForm.Designer.cs">
       <DependentUpon>aboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="chooseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chooseForm.Designer.cs">
+      <DependentUpon>chooseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="settingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="aboutForm.resx">
       <DependentUpon>aboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chooseForm.resx">
+      <DependentUpon>chooseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="settingsForm.resx">
       <DependentUpon>settingsForm.cs</DependentUpon>

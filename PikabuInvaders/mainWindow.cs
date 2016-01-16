@@ -16,18 +16,18 @@ namespace PikabuInvaders
         private string csrfToken;
         // Храним cookie после авторизации для повторного использования
         public static CookieContainer CookieContainer;
-        // Сосотояние атаки
+        // Сосотояние программы
         public bool isRunning;
+        // К какой лиге принадлежит пользователь
+        public string userSide = Properties.Settings.Default.userSide;
 
         public mainForm()
         {
-            //Properties.Settings.Default.Reset();
             InitializeComponent();
 
             CookieContainer = new CookieContainer();
 
             ContextMenu trayMenu = new ContextMenu();
-            trayMenu.MenuItems.Add("Открыть");
             trayMenu.MenuItems.Add("Выход", OnExit);
 
             notify.ContextMenu = trayMenu;
@@ -44,7 +44,7 @@ namespace PikabuInvaders
                 base.OnLoad(e);
             }
 
-            if (Properties.Settings.Default.autoAttack) runAttack();
+            if (Properties.Settings.Default.autoAttack) run();
         }
 
         private void logData(object text)
@@ -89,15 +89,15 @@ namespace PikabuInvaders
         {
             if (isRunning)
             {
-                stopAttack();
+                stop();
             }
             else
             {
-                runAttack();
+                run();
             }
         }
 
-        private void runAttack()
+        private void run()
         {
             startButton.Enabled = false;
             logData("Авторизуемся на pikabu...");
@@ -121,7 +121,7 @@ namespace PikabuInvaders
             if (data.result == false)
             {
                 logData(data.message);
-                stopAttack();
+                stop();
             }
             else
             {
@@ -138,7 +138,7 @@ namespace PikabuInvaders
 
                 if (Properties.Settings.Default.firstRun)
                 {
-                    DialogResult dialog = MessageBox.Show("Хотите отправлять информацию о том, сколько постов и комментариев вы заминусили? (сохраняется только ваш логин - пароль нигде не хранится)", "Отправка информации", MessageBoxButtons.YesNo);
+                    DialogResult dialog = MessageBox.Show("Хотите отправлять информацию о ваших действиях? (сохраняется только ваш логин - пароль нигде не хранится)", "Отправка статистики", MessageBoxButtons.YesNo);
                     if (dialog == DialogResult.Yes) Properties.Settings.Default.sendStatistics = true;
 
                     var webget = new HtmlWeb();
@@ -164,7 +164,7 @@ namespace PikabuInvaders
 
                 Properties.Settings.Default.Save();
 
-                logData("Начинаем атаку.");
+                logData("Начинаем работу.");
 
                 startButton.Text = "Стоп";
 
@@ -181,34 +181,42 @@ namespace PikabuInvaders
             startButton.Enabled = true;
         }
 
-        private void stopAttack()
+        private void stop()
         {
             checkPosts.Stop();
             checkNewPosts.Stop();
             sendStatistics.Stop();
 
-            logData("Приостанавливаем порабощение мира.");
             startButton.Text = "Старт";
             loginBox.Enabled = true;
             passBox.Enabled = true;
             isRunning = false;
+
+            logData("Программа остановлена.");
         }
 
         private void checkPosts_Tick(object sender, EventArgs e)
         {
             var postNumber = Properties.Settings.Default.lastCheckedPost;
-            logData("Минусим пост №" + postNumber + "...");
-            sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=-");
+
+            if (userSide == "good")
+            {
+                sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=+");
+                logData("Посту №" + postNumber + " поставлен +");
+            }
+            else
+            {
+                sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=-");
+                logData("Посту №" + postNumber + " поставлен -");
+            }
 
             Properties.Settings.Default.lastCheckedPost = postNumber + 1;
             Properties.Settings.Default.Save();
-
-            logData("Пост №" + postNumber + " заминусован.");
         }
 
         private void checkNewPosts_Tick(object sender, EventArgs e)
         {
-            logData("\r\nПроверяем новые посты на pikabu...");
+            logData("\r\nПроверяем наличие новых постов...");
 
             checkPosts.Stop();
 
@@ -218,17 +226,27 @@ namespace PikabuInvaders
             HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//a[contains(@class,'b-story__link')]");
             if (nodes != null)
             {
-                logData("Свежие посты найдены. Минусим!");
+                logData("Свежие посты найдены.");
                 foreach (HtmlNode row in nodes)
                 {
                     postNumber = Convert.ToInt32(row.Attributes[2].Value);
                     if (postNumber > Properties.Settings.Default.lastPost)
-                        sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + row.Attributes[2].Value + "&type=-");
+                        if (userSide == "good")
+                        {
+                            sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=+");
+                            logData("Поставили + посту №" + postNumber);
+                        }
+                        else
+                        {
+                            sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=-");
+                            logData("Поставили - посту №" + postNumber);
+                        }
                 }
 
                 Properties.Settings.Default.lastPost = postNumber;
                 Properties.Settings.Default.Save();
-                logData("Свежие посты успешно заминусены. Ждём новых.\r\n");
+
+                logData("Готово. Ждём новых постов.\r\n");
             }
             else
             {
@@ -240,15 +258,20 @@ namespace PikabuInvaders
 
         private void sendStatistics_Tick(object sender, EventArgs e)
         {
-            logData("Отправляем информацию о количестве заминусованных постов на сервер.");
+            logData("Отправляем статистику на сервер.");
             var webget = new HtmlWeb();
             webget.OverrideEncoding = Encoding.GetEncoding("windows-1251");
             var doc = webget.Load("http://pikabu.ru/profile/" + loginBox.Text);
             HtmlNode profile = doc.DocumentNode.SelectNodes("//div[contains(@class,'profile_wrap')]").First();
-            Match match = Regex.Match(profile.InnerHtml, @"([0-9]*) (минусов)");
+
+            string pattern;
+            if (userSide == "good") pattern = "([0-9]*) (плюсов)";
+            else pattern = "([0-9]*) (минусов)";
+            Match match = Regex.Match(profile.InnerHtml, pattern);
             string key = match.Groups[1].Value;
 
             var postData = "username=" + loginBox.Text;
+                postData += "&side=" + userSide;
                 postData += "&posts=" + key;
 
             sendPostRequest("http://pikabuinvaders.ru/statistics.php", postData, "");
@@ -287,6 +310,11 @@ namespace PikabuInvaders
         }
 
         private void OnExit(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

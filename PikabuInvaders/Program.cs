@@ -14,17 +14,26 @@ namespace PikabuInvaders
         [STAThread]
         static void Main(string[] args)
         {
+            Properties.Settings.Default.Reset();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            mainForm form = new mainForm();
 
-            if (args.Contains("/background"))
+            if (Properties.Settings.Default.firstRun)
             {
-                form.ShowInTaskbar = false;
-                form.WindowState = FormWindowState.Minimized;
+                Application.Run(new chooseForm());
             }
+            else
+            {
+                mainForm form = new mainForm();
 
-            Application.Run(form);
+                if (args.Contains("/background"))
+                {
+                    form.ShowInTaskbar = false;
+                    form.WindowState = FormWindowState.Minimized;
+                }
+
+                Application.Run(form);
+            }
         }
     }
 }

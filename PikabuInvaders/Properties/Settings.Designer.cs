@@ -154,5 +154,17 @@ namespace PikabuInvaders.Properties {
                 this["saveCredentials"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string userSide {
+            get {
+                return ((string)(this["userSide"]));
+            }
+            set {
+                this["userSide"] = value;
+            }
+        }
     }
 }

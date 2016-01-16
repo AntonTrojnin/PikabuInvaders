@@ -154,6 +154,7 @@
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pikabu Invaders";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
             this.Resize += new System.EventHandler(this.mainForm_Resize);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();

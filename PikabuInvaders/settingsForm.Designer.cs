@@ -42,9 +42,9 @@
             this.hiddenStartBox.Enabled = false;
             this.hiddenStartBox.Location = new System.Drawing.Point(12, 35);
             this.hiddenStartBox.Name = "hiddenStartBox";
-            this.hiddenStartBox.Size = new System.Drawing.Size(128, 17);
+            this.hiddenStartBox.Size = new System.Drawing.Size(114, 17);
             this.hiddenStartBox.TabIndex = 2;
-            this.hiddenStartBox.Text = "Запускать свёрнуто";
+            this.hiddenStartBox.Text = "Запускать в трее";
             this.hiddenStartBox.UseVisualStyleBackColor = true;
             this.hiddenStartBox.CheckedChanged += new System.EventHandler(this.hiddenStartBox_CheckedChanged);
             // 
@@ -53,9 +53,9 @@
             this.autoAttackBox.AutoSize = true;
             this.autoAttackBox.Location = new System.Drawing.Point(12, 58);
             this.autoAttackBox.Name = "autoAttackBox";
-            this.autoAttackBox.Size = new System.Drawing.Size(184, 17);
+            this.autoAttackBox.Size = new System.Drawing.Size(78, 17);
             this.autoAttackBox.TabIndex = 3;
-            this.autoAttackBox.Text = "Автоматически начинать атаку";
+            this.autoAttackBox.Text = "Автостарт";
             this.autoAttackBox.UseVisualStyleBackColor = true;
             this.autoAttackBox.CheckedChanged += new System.EventHandler(this.autoAttackBox_CheckedChanged);
             // 
@@ -75,9 +75,9 @@
             this.sendStatisticsBox.AutoSize = true;
             this.sendStatisticsBox.Location = new System.Drawing.Point(12, 105);
             this.sendStatisticsBox.Name = "sendStatisticsBox";
-            this.sendStatisticsBox.Size = new System.Drawing.Size(226, 17);
+            this.sendStatisticsBox.Size = new System.Drawing.Size(145, 17);
             this.sendStatisticsBox.TabIndex = 4;
-            this.sendStatisticsBox.Text = "Отправлять информацию о злодеяниях";
+            this.sendStatisticsBox.Text = "Отправлять статистику";
             this.sendStatisticsBox.UseVisualStyleBackColor = true;
             this.sendStatisticsBox.CheckedChanged += new System.EventHandler(this.sendDataBox_CheckedChanged);
             // 
