@@ -64,7 +64,7 @@ namespace PikabuInvaders
 
         private void logData(object text)
         {
-            logBox.AppendText(text + Environment.NewLine);
+            logBox.AppendText("[" + DateTime.Now.ToString("hh:mm") + "] " + text + Environment.NewLine);
         }
 
         private string sendPostRequest(string url, string data = "", string mode = "pikabu")
