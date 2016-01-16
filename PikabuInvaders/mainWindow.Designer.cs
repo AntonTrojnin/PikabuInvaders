@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.startButton = new System.Windows.Forms.Button();
             this.passBox = new System.Windows.Forms.TextBox();
             this.loginBox = new System.Windows.Forms.TextBox();
@@ -49,14 +49,14 @@
             this.ratingPage = new System.Windows.Forms.TabPage();
             this.loadingLabel = new System.Windows.Forms.Label();
             this.ratingGrid = new System.Windows.Forms.DataGridView();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userSideLabel = new System.Windows.Forms.Label();
-            this.inWorkLabel = new System.Windows.Forms.Label();
             this.userSideTextLabel = new System.Windows.Forms.Label();
             this.inWork = new System.Windows.Forms.Label();
             this.timeTimer = new System.Windows.Forms.Timer(this.components);
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.siteLabel = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.tabs.SuspendLayout();
             this.mainPage.SuspendLayout();
@@ -153,17 +153,17 @@
             // 
             // sendStatistics
             // 
-            this.sendStatistics.Interval = 50000;
+            this.sendStatistics.Interval = 2000;
             this.sendStatistics.Tick += new System.EventHandler(this.sendStatistics_Tick);
             // 
             // tabs
             // 
             this.tabs.Controls.Add(this.mainPage);
             this.tabs.Controls.Add(this.ratingPage);
-            this.tabs.Location = new System.Drawing.Point(12, 57);
+            this.tabs.Location = new System.Drawing.Point(12, 27);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(411, 207);
+            this.tabs.Size = new System.Drawing.Size(410, 210);
             this.tabs.TabIndex = 5;
             // 
             // mainPage
@@ -175,7 +175,7 @@
             this.mainPage.Location = new System.Drawing.Point(4, 22);
             this.mainPage.Name = "mainPage";
             this.mainPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mainPage.Size = new System.Drawing.Size(403, 181);
+            this.mainPage.Size = new System.Drawing.Size(402, 184);
             this.mainPage.TabIndex = 0;
             this.mainPage.Text = "Основное";
             this.mainPage.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             this.ratingPage.Location = new System.Drawing.Point(4, 22);
             this.ratingPage.Name = "ratingPage";
             this.ratingPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ratingPage.Size = new System.Drawing.Size(403, 181);
+            this.ratingPage.Size = new System.Drawing.Size(402, 184);
             this.ratingPage.TabIndex = 1;
             this.ratingPage.Text = "Рейтинг";
             this.ratingPage.UseVisualStyleBackColor = true;
@@ -206,6 +206,9 @@
             // 
             // ratingGrid
             // 
+            this.ratingGrid.AllowUserToAddRows = false;
+            this.ratingGrid.AllowUserToDeleteRows = false;
+            this.ratingGrid.AllowUserToOrderColumns = true;
             this.ratingGrid.AllowUserToResizeColumns = false;
             this.ratingGrid.AllowUserToResizeRows = false;
             this.ratingGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -216,14 +219,14 @@
             this.number,
             this.username,
             this.votes});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle12;
             this.ratingGrid.Location = new System.Drawing.Point(7, 7);
             this.ratingGrid.Name = "ratingGrid";
             this.ratingGrid.RowHeadersVisible = false;
@@ -232,9 +235,42 @@
             this.ratingGrid.ShowCellToolTips = false;
             this.ratingGrid.ShowEditingIcon = false;
             this.ratingGrid.ShowRowErrors = false;
-            this.ratingGrid.Size = new System.Drawing.Size(390, 168);
+            this.ratingGrid.Size = new System.Drawing.Size(390, 171);
             this.ratingGrid.TabIndex = 3;
             this.ratingGrid.Visible = false;
+            // 
+            // userSideLabel
+            // 
+            this.userSideLabel.AutoSize = true;
+            this.userSideLabel.Location = new System.Drawing.Point(13, 240);
+            this.userSideLabel.Name = "userSideLabel";
+            this.userSideLabel.Size = new System.Drawing.Size(63, 13);
+            this.userSideLabel.TabIndex = 6;
+            this.userSideLabel.Text = "Ваша лига:";
+            // 
+            // userSideTextLabel
+            // 
+            this.userSideTextLabel.AutoSize = true;
+            this.userSideTextLabel.Location = new System.Drawing.Point(73, 240);
+            this.userSideTextLabel.Name = "userSideTextLabel";
+            this.userSideTextLabel.Size = new System.Drawing.Size(68, 13);
+            this.userSideTextLabel.TabIndex = 8;
+            this.userSideTextLabel.Text = "USER_SIDE";
+            // 
+            // inWork
+            // 
+            this.inWork.AutoSize = true;
+            this.inWork.Location = new System.Drawing.Point(175, 240);
+            this.inWork.Name = "inWork";
+            this.inWork.Size = new System.Drawing.Size(74, 13);
+            this.inWork.TabIndex = 9;
+            this.inWork.Text = "Остановлено";
+            this.inWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timeTimer
+            // 
+            this.timeTimer.Interval = 200;
+            this.timeTimer.Tick += new System.EventHandler(this.timeTimer_Tick);
             // 
             // number
             // 
@@ -243,7 +279,7 @@
             this.number.HeaderText = "#";
             this.number.Name = "number";
             this.number.ReadOnly = true;
-            this.number.Width = 25;
+            this.number.Width = 30;
             // 
             // username
             // 
@@ -257,55 +293,26 @@
             this.votes.Name = "votes";
             this.votes.ReadOnly = true;
             // 
-            // userSideLabel
+            // siteLabel
             // 
-            this.userSideLabel.AutoSize = true;
-            this.userSideLabel.Location = new System.Drawing.Point(13, 33);
-            this.userSideLabel.Name = "userSideLabel";
-            this.userSideLabel.Size = new System.Drawing.Size(63, 13);
-            this.userSideLabel.TabIndex = 6;
-            this.userSideLabel.Text = "Ваша лига:";
-            // 
-            // inWorkLabel
-            // 
-            this.inWorkLabel.AutoSize = true;
-            this.inWorkLabel.Location = new System.Drawing.Point(318, 33);
-            this.inWorkLabel.Name = "inWorkLabel";
-            this.inWorkLabel.Size = new System.Drawing.Size(55, 13);
-            this.inWorkLabel.TabIndex = 7;
-            this.inWorkLabel.Text = "В работе:";
-            // 
-            // userSideTextLabel
-            // 
-            this.userSideTextLabel.AutoSize = true;
-            this.userSideTextLabel.Location = new System.Drawing.Point(73, 33);
-            this.userSideTextLabel.Name = "userSideTextLabel";
-            this.userSideTextLabel.Size = new System.Drawing.Size(68, 13);
-            this.userSideTextLabel.TabIndex = 8;
-            this.userSideTextLabel.Text = "USER_SIDE";
-            // 
-            // inWork
-            // 
-            this.inWork.AutoSize = true;
-            this.inWork.Location = new System.Drawing.Point(370, 33);
-            this.inWork.Name = "inWork";
-            this.inWork.Size = new System.Drawing.Size(49, 13);
-            this.inWork.TabIndex = 9;
-            this.inWork.Text = "00:00:00";
-            // 
-            // timeTimer
-            // 
-            this.timeTimer.Interval = 200;
-            this.timeTimer.Tick += new System.EventHandler(this.timeTimer_Tick);
+            this.siteLabel.AutoSize = true;
+            this.siteLabel.Location = new System.Drawing.Point(292, 240);
+            this.siteLabel.Name = "siteLabel";
+            this.siteLabel.Size = new System.Drawing.Size(122, 13);
+            this.siteLabel.TabIndex = 10;
+            this.siteLabel.TabStop = true;
+            this.siteLabel.Text = "http://pikabuinvaders.ru";
+            this.siteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.siteLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.siteLabel_LinkClicked);
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 276);
+            this.ClientSize = new System.Drawing.Size(434, 260);
+            this.Controls.Add(this.siteLabel);
             this.Controls.Add(this.inWork);
             this.Controls.Add(this.userSideTextLabel);
-            this.Controls.Add(this.inWorkLabel);
             this.Controls.Add(this.userSideLabel);
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.mainMenu);
@@ -349,7 +356,6 @@
         private System.Windows.Forms.TabPage mainPage;
         private System.Windows.Forms.TabPage ratingPage;
         private System.Windows.Forms.Label userSideLabel;
-        private System.Windows.Forms.Label inWorkLabel;
         private System.Windows.Forms.Label userSideTextLabel;
         private System.Windows.Forms.Label inWork;
         private System.Windows.Forms.Label loadingLabel;
@@ -358,6 +364,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn votes;
+        private System.Windows.Forms.LinkLabel siteLabel;
     }
 }
 

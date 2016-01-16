@@ -360,10 +360,8 @@ namespace PikabuInvaders
             foreach (var row in table)
             {
                 ratingGrid.Rows.Add(num, row.username, row.posts);
-
                 if (row.side == "good") ratingGrid.Rows[num-1].DefaultCellStyle.BackColor = Color.DarkOliveGreen;
                 else ratingGrid.Rows[num-1].DefaultCellStyle.BackColor = Color.Brown;
-
                 num++;
             }
 
@@ -377,6 +375,11 @@ namespace PikabuInvaders
             ratingGrid.Hide();
             ratingGrid.Rows.Clear();
             ratingGrid.Refresh();
+        }
+
+        private void siteLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(siteLabel.Text);
         }
 
         private void settingsMenuitem_Click(object sender, EventArgs e)
