@@ -14,6 +14,7 @@ namespace PikabuInvaders
         [STAThread]
         static void Main(string[] args)
         {
+            //Properties.Settings.Default.Reset();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

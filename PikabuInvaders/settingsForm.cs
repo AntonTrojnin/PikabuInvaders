@@ -20,6 +20,15 @@ namespace PikabuInvaders
             sendStatisticsBox.Checked = Properties.Settings.Default.sendStatistics;
             saveCredentialsBox.Checked = Properties.Settings.Default.saveCredentials;
 
+            if (Properties.Settings.Default.userSide == "good")
+            {
+                userSideComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                userSideComboBox.SelectedIndex = 1;
+            }
+
             if (rkApp.GetValue("PikabuInvaders") != null)
             {
                 startupBox.Checked = true;
@@ -74,9 +83,22 @@ namespace PikabuInvaders
             Properties.Settings.Default.saveCredentials = saveCredentialsBox.Checked;
         }
 
+        private void sideComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (userSideComboBox.SelectedIndex == 0)
+            {
+                Properties.Settings.Default.userSide = "good";
+            }
+            else
+            {
+                Properties.Settings.Default.userSide = "evil";
+            }
+        }
+
         private void settingsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Save();
+            mainForm.userSide = Properties.Settings.Default.userSide;
         }
     }
 }
