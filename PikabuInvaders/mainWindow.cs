@@ -79,6 +79,14 @@ namespace PikabuInvaders
             StreamReader reader = new StreamReader(stream);
 
             var result = reader.ReadToEnd();
+            dynamic json = JsonConvert.DeserializeObject(result);
+            if (json.status == 2)
+            {
+                response = request.GetResponse();
+                stream = response.GetResponseStream();
+                reader = new StreamReader(stream);
+            }
+
             stream.Dispose();
             reader.Dispose();
 
@@ -201,7 +209,7 @@ namespace PikabuInvaders
 
             if (userSide == "good")
             {
-                sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=+");
+                sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=%2B");
                 logData("Посту №" + postNumber + " поставлен +");
             }
             else
@@ -216,9 +224,9 @@ namespace PikabuInvaders
 
         private void checkNewPosts_Tick(object sender, EventArgs e)
         {
-            logData("\r\nПроверяем наличие новых постов...");
-
             checkPosts.Stop();
+
+            logData("\r\nПроверяем наличие новых постов...");
 
             int postNumber = 0;
             var webget = new HtmlWeb();
@@ -231,9 +239,10 @@ namespace PikabuInvaders
                 {
                     postNumber = Convert.ToInt32(row.Attributes[2].Value);
                     if (postNumber > Properties.Settings.Default.lastPost)
+                    {
                         if (userSide == "good")
                         {
-                            sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=+");
+                            sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=%2B");
                             logData("Поставили + посту №" + postNumber);
                         }
                         else
@@ -241,6 +250,7 @@ namespace PikabuInvaders
                             sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=-");
                             logData("Поставили - посту №" + postNumber);
                         }
+                    }
                 }
 
                 Properties.Settings.Default.lastPost = postNumber;

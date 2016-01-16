@@ -34,7 +34,7 @@
             // 
             // goodForceButton
             // 
-            this.goodForceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.goodForceButton.BackColor = System.Drawing.Color.Green;
             this.goodForceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.goodForceButton.ForeColor = System.Drawing.SystemColors.Control;
             this.goodForceButton.Location = new System.Drawing.Point(12, 12);
