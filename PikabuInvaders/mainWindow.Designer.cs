@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.startButton = new System.Windows.Forms.Button();
             this.passBox = new System.Windows.Forms.TextBox();
             this.loginBox = new System.Windows.Forms.TextBox();
@@ -44,23 +44,23 @@
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkPosts = new System.Windows.Forms.Timer(this.components);
             this.sendStatistics = new System.Windows.Forms.Timer(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabs = new System.Windows.Forms.TabControl();
+            this.mainPage = new System.Windows.Forms.TabPage();
+            this.ratingPage = new System.Windows.Forms.TabPage();
             this.loadingLabel = new System.Windows.Forms.Label();
             this.ratingGrid = new System.Windows.Forms.DataGridView();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.userSideLabel = new System.Windows.Forms.Label();
             this.inWorkLabel = new System.Windows.Forms.Label();
+            this.userSideTextLabel = new System.Windows.Forms.Label();
+            this.inWork = new System.Windows.Forms.Label();
             this.timeTimer = new System.Windows.Forms.Timer(this.components);
             this.mainMenu.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabs.SuspendLayout();
+            this.mainPage.SuspendLayout();
+            this.ratingPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ratingGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,43 +156,43 @@
             this.sendStatistics.Interval = 50000;
             this.sendStatistics.Tick += new System.EventHandler(this.sendStatistics_Tick);
             // 
-            // tabControl1
+            // tabs
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 57);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(411, 207);
-            this.tabControl1.TabIndex = 5;
+            this.tabs.Controls.Add(this.mainPage);
+            this.tabs.Controls.Add(this.ratingPage);
+            this.tabs.Location = new System.Drawing.Point(12, 57);
+            this.tabs.Name = "tabs";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.Size = new System.Drawing.Size(411, 207);
+            this.tabs.TabIndex = 5;
             // 
-            // tabPage1
+            // mainPage
             // 
-            this.tabPage1.Controls.Add(this.logBox);
-            this.tabPage1.Controls.Add(this.startButton);
-            this.tabPage1.Controls.Add(this.loginBox);
-            this.tabPage1.Controls.Add(this.passBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(403, 181);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Основное";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.mainPage.Controls.Add(this.logBox);
+            this.mainPage.Controls.Add(this.startButton);
+            this.mainPage.Controls.Add(this.loginBox);
+            this.mainPage.Controls.Add(this.passBox);
+            this.mainPage.Location = new System.Drawing.Point(4, 22);
+            this.mainPage.Name = "mainPage";
+            this.mainPage.Padding = new System.Windows.Forms.Padding(3);
+            this.mainPage.Size = new System.Drawing.Size(403, 181);
+            this.mainPage.TabIndex = 0;
+            this.mainPage.Text = "Основное";
+            this.mainPage.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // ratingPage
             // 
-            this.tabPage2.Controls.Add(this.loadingLabel);
-            this.tabPage2.Controls.Add(this.ratingGrid);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(403, 181);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Рейтинг";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
-            this.tabPage2.Leave += new System.EventHandler(this.tabPage2_Leave);
+            this.ratingPage.Controls.Add(this.loadingLabel);
+            this.ratingPage.Controls.Add(this.ratingGrid);
+            this.ratingPage.Location = new System.Drawing.Point(4, 22);
+            this.ratingPage.Name = "ratingPage";
+            this.ratingPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ratingPage.Size = new System.Drawing.Size(403, 181);
+            this.ratingPage.TabIndex = 1;
+            this.ratingPage.Text = "Рейтинг";
+            this.ratingPage.UseVisualStyleBackColor = true;
+            this.ratingPage.Enter += new System.EventHandler(this.tabPage2_Enter);
+            this.ratingPage.Leave += new System.EventHandler(this.tabPage2_Leave);
             // 
             // loadingLabel
             // 
@@ -216,14 +216,14 @@
             this.number,
             this.username,
             this.votes});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.ratingGrid.Location = new System.Drawing.Point(7, 7);
             this.ratingGrid.Name = "ratingGrid";
             this.ratingGrid.RowHeadersVisible = false;
@@ -257,41 +257,41 @@
             this.votes.Name = "votes";
             this.votes.ReadOnly = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Ваша лига:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(318, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "В работе:";
-            // 
             // userSideLabel
             // 
             this.userSideLabel.AutoSize = true;
-            this.userSideLabel.Location = new System.Drawing.Point(73, 33);
+            this.userSideLabel.Location = new System.Drawing.Point(13, 33);
             this.userSideLabel.Name = "userSideLabel";
-            this.userSideLabel.Size = new System.Drawing.Size(68, 13);
-            this.userSideLabel.TabIndex = 8;
-            this.userSideLabel.Text = "USER_SIDE";
+            this.userSideLabel.Size = new System.Drawing.Size(63, 13);
+            this.userSideLabel.TabIndex = 6;
+            this.userSideLabel.Text = "Ваша лига:";
             // 
             // inWorkLabel
             // 
             this.inWorkLabel.AutoSize = true;
-            this.inWorkLabel.Location = new System.Drawing.Point(370, 33);
+            this.inWorkLabel.Location = new System.Drawing.Point(318, 33);
             this.inWorkLabel.Name = "inWorkLabel";
-            this.inWorkLabel.Size = new System.Drawing.Size(49, 13);
-            this.inWorkLabel.TabIndex = 9;
-            this.inWorkLabel.Text = "00:00:00";
+            this.inWorkLabel.Size = new System.Drawing.Size(55, 13);
+            this.inWorkLabel.TabIndex = 7;
+            this.inWorkLabel.Text = "В работе:";
+            // 
+            // userSideTextLabel
+            // 
+            this.userSideTextLabel.AutoSize = true;
+            this.userSideTextLabel.Location = new System.Drawing.Point(73, 33);
+            this.userSideTextLabel.Name = "userSideTextLabel";
+            this.userSideTextLabel.Size = new System.Drawing.Size(68, 13);
+            this.userSideTextLabel.TabIndex = 8;
+            this.userSideTextLabel.Text = "USER_SIDE";
+            // 
+            // inWork
+            // 
+            this.inWork.AutoSize = true;
+            this.inWork.Location = new System.Drawing.Point(370, 33);
+            this.inWork.Name = "inWork";
+            this.inWork.Size = new System.Drawing.Size(49, 13);
+            this.inWork.TabIndex = 9;
+            this.inWork.Text = "00:00:00";
             // 
             // timeTimer
             // 
@@ -303,11 +303,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 276);
+            this.Controls.Add(this.inWork);
+            this.Controls.Add(this.userSideTextLabel);
             this.Controls.Add(this.inWorkLabel);
             this.Controls.Add(this.userSideLabel);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabs);
             this.Controls.Add(this.mainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -319,11 +319,11 @@
             this.Resize += new System.EventHandler(this.mainForm_Resize);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabs.ResumeLayout(false);
+            this.mainPage.ResumeLayout(false);
+            this.mainPage.PerformLayout();
+            this.ratingPage.ResumeLayout(false);
+            this.ratingPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ratingGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -345,13 +345,13 @@
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.Timer checkPosts;
         private System.Windows.Forms.Timer sendStatistics;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabControl tabs;
+        private System.Windows.Forms.TabPage mainPage;
+        private System.Windows.Forms.TabPage ratingPage;
         private System.Windows.Forms.Label userSideLabel;
         private System.Windows.Forms.Label inWorkLabel;
+        private System.Windows.Forms.Label userSideTextLabel;
+        private System.Windows.Forms.Label inWork;
         private System.Windows.Forms.Label loadingLabel;
         private System.Windows.Forms.Timer timeTimer;
         private System.Windows.Forms.DataGridView ratingGrid;

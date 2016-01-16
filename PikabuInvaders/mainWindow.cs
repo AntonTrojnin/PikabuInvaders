@@ -8,7 +8,6 @@ using HtmlAgilityPack;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
-using System.Collections.Generic;
 using Microsoft.CSharp.RuntimeBinder;
 using System.Drawing;
 
@@ -39,13 +38,13 @@ namespace PikabuInvaders
 
             if (userSide == "good")
             {
-                userSideLabel.Text = "Лига добра";
-                userSideLabel.ForeColor = System.Drawing.Color.Green;
+                userSideTextLabel.Text = "Лига добра";
+                userSideTextLabel.ForeColor = System.Drawing.Color.Green;
             }
             else
             {
-                userSideLabel.Text = "Лига зла";
-                userSideLabel.ForeColor = System.Drawing.Color.Red;
+                userSideTextLabel.Text = "Лига зла";
+                userSideTextLabel.ForeColor = System.Drawing.Color.Red;
             }
         }
 
@@ -330,7 +329,7 @@ namespace PikabuInvaders
 
         private void timeTimer_Tick(object sender, EventArgs e)
         {
-            inWorkLabel.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+            inWork.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
         }
 
         private void mainForm_Resize(object sender, EventArgs e)
