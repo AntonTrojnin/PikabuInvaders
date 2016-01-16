@@ -166,17 +166,5 @@ namespace PikabuInvaders.Properties {
                 this["userSide"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ignoreMyself {
-            get {
-                return ((bool)(this["ignoreMyself"]));
-            }
-            set {
-                this["ignoreMyself"] = value;
-            }
-        }
     }
 }
