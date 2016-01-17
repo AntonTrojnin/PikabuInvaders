@@ -37,6 +37,8 @@
             this.sideLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +47,7 @@
             // 
             this.hiddenStartBox.AutoSize = true;
             this.hiddenStartBox.Enabled = false;
-            this.hiddenStartBox.Location = new System.Drawing.Point(6, 40);
+            this.hiddenStartBox.Location = new System.Drawing.Point(6, 97);
             this.hiddenStartBox.Name = "hiddenStartBox";
             this.hiddenStartBox.Size = new System.Drawing.Size(114, 17);
             this.hiddenStartBox.TabIndex = 2;
@@ -56,18 +58,18 @@
             // autoAttackBox
             // 
             this.autoAttackBox.AutoSize = true;
-            this.autoAttackBox.Location = new System.Drawing.Point(6, 63);
+            this.autoAttackBox.Location = new System.Drawing.Point(6, 120);
             this.autoAttackBox.Name = "autoAttackBox";
-            this.autoAttackBox.Size = new System.Drawing.Size(78, 17);
+            this.autoAttackBox.Size = new System.Drawing.Size(164, 17);
             this.autoAttackBox.TabIndex = 3;
-            this.autoAttackBox.Text = "Автостарт";
+            this.autoAttackBox.Text = "Стартовать автоматически";
             this.autoAttackBox.UseVisualStyleBackColor = true;
             this.autoAttackBox.CheckedChanged += new System.EventHandler(this.autoAttackBox_CheckedChanged);
             // 
             // startupBox
             // 
             this.startupBox.AutoSize = true;
-            this.startupBox.Location = new System.Drawing.Point(6, 17);
+            this.startupBox.Location = new System.Drawing.Point(6, 74);
             this.startupBox.Name = "startupBox";
             this.startupBox.Size = new System.Drawing.Size(180, 17);
             this.startupBox.TabIndex = 1;
@@ -78,7 +80,7 @@
             // sendStatisticsBox
             // 
             this.sendStatisticsBox.AutoSize = true;
-            this.sendStatisticsBox.Location = new System.Drawing.Point(6, 110);
+            this.sendStatisticsBox.Location = new System.Drawing.Point(6, 120);
             this.sendStatisticsBox.Name = "sendStatisticsBox";
             this.sendStatisticsBox.Size = new System.Drawing.Size(145, 17);
             this.sendStatisticsBox.TabIndex = 4;
@@ -89,7 +91,7 @@
             // saveCredentialsBox
             // 
             this.saveCredentialsBox.AutoSize = true;
-            this.saveCredentialsBox.Location = new System.Drawing.Point(6, 87);
+            this.saveCredentialsBox.Location = new System.Drawing.Point(6, 63);
             this.saveCredentialsBox.Name = "saveCredentialsBox";
             this.saveCredentialsBox.Size = new System.Drawing.Size(168, 17);
             this.saveCredentialsBox.TabIndex = 6;
@@ -103,51 +105,68 @@
             this.userSideComboBox.Items.AddRange(new object[] {
             "Лига добра",
             "Лига зла"});
-            this.userSideComboBox.Location = new System.Drawing.Point(6, 34);
+            this.userSideComboBox.Location = new System.Drawing.Point(6, 47);
             this.userSideComboBox.Name = "userSideComboBox";
-            this.userSideComboBox.Size = new System.Drawing.Size(182, 21);
+            this.userSideComboBox.Size = new System.Drawing.Size(199, 21);
             this.userSideComboBox.TabIndex = 7;
             this.userSideComboBox.SelectedIndexChanged += new System.EventHandler(this.sideComboBox_SelectedIndexChanged);
             // 
             // sideLabel
             // 
-            this.sideLabel.AutoSize = true;
-            this.sideLabel.Location = new System.Drawing.Point(6, 18);
+            this.sideLabel.Location = new System.Drawing.Point(6, 16);
             this.sideLabel.Name = "sideLabel";
-            this.sideLabel.Size = new System.Drawing.Size(121, 13);
+            this.sideLabel.Size = new System.Drawing.Size(199, 28);
             this.sideLabel.TabIndex = 9;
-            this.sideLabel.Text = "На какой вы стороне?";
+            this.sideLabel.Text = "Ты можешь поменять свою сторону в любой момент.";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.userSideComboBox);
+            this.groupBox1.Controls.Add(this.sideLabel);
             this.groupBox1.Controls.Add(this.hiddenStartBox);
             this.groupBox1.Controls.Add(this.startupBox);
-            this.groupBox1.Controls.Add(this.saveCredentialsBox);
             this.groupBox1.Controls.Add(this.autoAttackBox);
-            this.groupBox1.Controls.Add(this.sendStatisticsBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(190, 156);
+            this.groupBox1.Size = new System.Drawing.Size(211, 143);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Общие";
+            this.groupBox1.Text = "Основные";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.userSideComboBox);
-            this.groupBox2.Controls.Add(this.sideLabel);
-            this.groupBox2.Location = new System.Drawing.Point(208, 12);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.sendStatisticsBox);
+            this.groupBox2.Controls.Add(this.saveCredentialsBox);
+            this.groupBox2.Location = new System.Drawing.Point(229, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(194, 156);
+            this.groupBox2.Size = new System.Drawing.Size(172, 143);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Дополнительно";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 44);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Если хочешь, чтобы программа запоминала введённый логин и пароль.";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(3, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(173, 31);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Отключи, если не хочешь учавстовать в рейтинге.";
             // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 178);
+            this.ClientSize = new System.Drawing.Size(413, 167);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -178,5 +197,7 @@
         private System.Windows.Forms.Label sideLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
