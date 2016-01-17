@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.startButton = new System.Windows.Forms.Button();
             this.passBox = new System.Windows.Forms.TextBox();
             this.loginBox = new System.Windows.Forms.TextBox();
@@ -185,15 +185,14 @@
             // 
             // ratingPage
             // 
-            this.ratingPage.Controls.Add(this.loadingLabel);
             this.ratingPage.Controls.Add(this.ratingGrid);
+            this.ratingPage.Controls.Add(this.loadingLabel);
             this.ratingPage.Location = new System.Drawing.Point(4, 22);
+            this.ratingPage.Margin = new System.Windows.Forms.Padding(0);
             this.ratingPage.Name = "ratingPage";
-            this.ratingPage.Padding = new System.Windows.Forms.Padding(3);
             this.ratingPage.Size = new System.Drawing.Size(402, 184);
             this.ratingPage.TabIndex = 1;
             this.ratingPage.Text = "Рейтинг";
-            this.ratingPage.UseVisualStyleBackColor = true;
             this.ratingPage.Enter += new System.EventHandler(this.tabPage2_Enter);
             this.ratingPage.Leave += new System.EventHandler(this.tabPage2_Leave);
             // 
@@ -201,7 +200,7 @@
             // 
             this.loadingLabel.AutoSize = true;
             this.loadingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loadingLabel.Location = new System.Drawing.Point(104, 76);
+            this.loadingLabel.Location = new System.Drawing.Point(101, 73);
             this.loadingLabel.Name = "loadingLabel";
             this.loadingLabel.Size = new System.Drawing.Size(195, 24);
             this.loadingLabel.TabIndex = 0;
@@ -211,34 +210,36 @@
             // 
             this.ratingGrid.AllowUserToAddRows = false;
             this.ratingGrid.AllowUserToDeleteRows = false;
-            this.ratingGrid.AllowUserToOrderColumns = true;
             this.ratingGrid.AllowUserToResizeColumns = false;
             this.ratingGrid.AllowUserToResizeRows = false;
             this.ratingGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ratingGrid.BackgroundColor = System.Drawing.SystemColors.Window;
             this.ratingGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ratingGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.ratingGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ratingGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.number,
             this.username,
             this.votes});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ratingGrid.Location = new System.Drawing.Point(6, 6);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ratingGrid.Location = new System.Drawing.Point(-4, 0);
             this.ratingGrid.Name = "ratingGrid";
+            this.ratingGrid.ReadOnly = true;
             this.ratingGrid.RowHeadersVisible = false;
             this.ratingGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ratingGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ratingGrid.ShowCellErrors = false;
             this.ratingGrid.ShowCellToolTips = false;
             this.ratingGrid.ShowEditingIcon = false;
             this.ratingGrid.ShowRowErrors = false;
-            this.ratingGrid.Size = new System.Drawing.Size(390, 172);
+            this.ratingGrid.Size = new System.Drawing.Size(410, 188);
             this.ratingGrid.TabIndex = 3;
             this.ratingGrid.Visible = false;
             // 
@@ -362,7 +363,6 @@
         private System.Windows.Forms.Timer sendStatistics;
         private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage mainPage;
-        private System.Windows.Forms.TabPage ratingPage;
         private System.Windows.Forms.Label userSideLabel;
         private System.Windows.Forms.Label userSideTextLabel;
         private System.Windows.Forms.Label inWork;
@@ -374,6 +374,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn votes;
         private System.Windows.Forms.LinkLabel siteLabel;
         private System.Windows.Forms.Timer checkInternetTimer;
+        private System.Windows.Forms.TabPage ratingPage;
     }
 }
 
