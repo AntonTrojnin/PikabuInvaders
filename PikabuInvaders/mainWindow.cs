@@ -329,7 +329,7 @@ namespace PikabuInvaders
 
         private void timeTimer_Tick(object sender, EventArgs e)
         {
-            inWork.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+            this.Text = "Pikabu Invaders [" + stopwatch.Elapsed.ToString("hh\\:mm\\:ss") + "]";
         }
 
         private void checkInternetTimer_Tick(object sender, EventArgs e)
