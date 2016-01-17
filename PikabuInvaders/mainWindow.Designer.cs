@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.startButton = new System.Windows.Forms.Button();
             this.passBox = new System.Windows.Forms.TextBox();
             this.loginBox = new System.Windows.Forms.TextBox();
@@ -49,14 +49,15 @@
             this.ratingPage = new System.Windows.Forms.TabPage();
             this.loadingLabel = new System.Windows.Forms.Label();
             this.ratingGrid = new System.Windows.Forms.DataGridView();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userSideLabel = new System.Windows.Forms.Label();
             this.userSideTextLabel = new System.Windows.Forms.Label();
             this.inWork = new System.Windows.Forms.Label();
             this.timeTimer = new System.Windows.Forms.Timer(this.components);
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siteLabel = new System.Windows.Forms.LinkLabel();
+            this.checkInternetTimer = new System.Windows.Forms.Timer(this.components);
             this.mainMenu.SuspendLayout();
             this.tabs.SuspendLayout();
             this.mainPage.SuspendLayout();
@@ -92,12 +93,14 @@
             // 
             // logBox
             // 
+            this.logBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.logBox.Location = new System.Drawing.Point(6, 37);
             this.logBox.Multiline = true;
             this.logBox.Name = "logBox";
             this.logBox.ReadOnly = true;
             this.logBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logBox.Size = new System.Drawing.Size(391, 138);
+            this.logBox.ShortcutsEnabled = false;
+            this.logBox.Size = new System.Drawing.Size(391, 141);
             this.logBox.TabIndex = 3;
             // 
             // checkNewPosts
@@ -153,7 +156,7 @@
             // 
             // sendStatistics
             // 
-            this.sendStatistics.Interval = 2000;
+            this.sendStatistics.Interval = 50000;
             this.sendStatistics.Tick += new System.EventHandler(this.sendStatistics_Tick);
             // 
             // tabs
@@ -219,15 +222,15 @@
             this.number,
             this.username,
             this.votes});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle12;
-            this.ratingGrid.Location = new System.Drawing.Point(7, 7);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ratingGrid.Location = new System.Drawing.Point(6, 6);
             this.ratingGrid.Name = "ratingGrid";
             this.ratingGrid.RowHeadersVisible = false;
             this.ratingGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -235,42 +238,9 @@
             this.ratingGrid.ShowCellToolTips = false;
             this.ratingGrid.ShowEditingIcon = false;
             this.ratingGrid.ShowRowErrors = false;
-            this.ratingGrid.Size = new System.Drawing.Size(390, 171);
+            this.ratingGrid.Size = new System.Drawing.Size(390, 172);
             this.ratingGrid.TabIndex = 3;
             this.ratingGrid.Visible = false;
-            // 
-            // userSideLabel
-            // 
-            this.userSideLabel.AutoSize = true;
-            this.userSideLabel.Location = new System.Drawing.Point(13, 240);
-            this.userSideLabel.Name = "userSideLabel";
-            this.userSideLabel.Size = new System.Drawing.Size(63, 13);
-            this.userSideLabel.TabIndex = 6;
-            this.userSideLabel.Text = "Ваша лига:";
-            // 
-            // userSideTextLabel
-            // 
-            this.userSideTextLabel.AutoSize = true;
-            this.userSideTextLabel.Location = new System.Drawing.Point(73, 240);
-            this.userSideTextLabel.Name = "userSideTextLabel";
-            this.userSideTextLabel.Size = new System.Drawing.Size(68, 13);
-            this.userSideTextLabel.TabIndex = 8;
-            this.userSideTextLabel.Text = "USER_SIDE";
-            // 
-            // inWork
-            // 
-            this.inWork.AutoSize = true;
-            this.inWork.Location = new System.Drawing.Point(175, 240);
-            this.inWork.Name = "inWork";
-            this.inWork.Size = new System.Drawing.Size(74, 13);
-            this.inWork.TabIndex = 9;
-            this.inWork.Text = "Остановлено";
-            this.inWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // timeTimer
-            // 
-            this.timeTimer.Interval = 200;
-            this.timeTimer.Tick += new System.EventHandler(this.timeTimer_Tick);
             // 
             // number
             // 
@@ -293,6 +263,39 @@
             this.votes.Name = "votes";
             this.votes.ReadOnly = true;
             // 
+            // userSideLabel
+            // 
+            this.userSideLabel.AutoSize = true;
+            this.userSideLabel.Location = new System.Drawing.Point(13, 240);
+            this.userSideLabel.Name = "userSideLabel";
+            this.userSideLabel.Size = new System.Drawing.Size(63, 13);
+            this.userSideLabel.TabIndex = 6;
+            this.userSideLabel.Text = "Ваша лига:";
+            // 
+            // userSideTextLabel
+            // 
+            this.userSideTextLabel.AutoSize = true;
+            this.userSideTextLabel.Location = new System.Drawing.Point(73, 240);
+            this.userSideTextLabel.Name = "userSideTextLabel";
+            this.userSideTextLabel.Size = new System.Drawing.Size(68, 13);
+            this.userSideTextLabel.TabIndex = 8;
+            this.userSideTextLabel.Text = "USER_SIDE";
+            // 
+            // inWork
+            // 
+            this.inWork.AutoSize = true;
+            this.inWork.Location = new System.Drawing.Point(182, 240);
+            this.inWork.Name = "inWork";
+            this.inWork.Size = new System.Drawing.Size(74, 13);
+            this.inWork.TabIndex = 9;
+            this.inWork.Text = "Остановлено";
+            this.inWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timeTimer
+            // 
+            this.timeTimer.Interval = 200;
+            this.timeTimer.Tick += new System.EventHandler(this.timeTimer_Tick);
+            // 
             // siteLabel
             // 
             this.siteLabel.AutoSize = true;
@@ -304,6 +307,11 @@
             this.siteLabel.Text = "http://pikabuinvaders.ru";
             this.siteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.siteLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.siteLabel_LinkClicked);
+            // 
+            // checkInternetTimer
+            // 
+            this.checkInternetTimer.Interval = 5000;
+            this.checkInternetTimer.Tick += new System.EventHandler(this.checkInternetTimer_Tick);
             // 
             // mainForm
             // 
@@ -365,6 +373,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn votes;
         private System.Windows.Forms.LinkLabel siteLabel;
+        private System.Windows.Forms.Timer checkInternetTimer;
     }
 }
 
