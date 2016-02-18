@@ -121,18 +121,6 @@ namespace PikabuInvaders.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3500000")]
-        public int lastCheckedPost {
-            get {
-                return ((int)(this["lastCheckedPost"]));
-            }
-            set {
-                this["lastCheckedPost"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int firstPost {
             get {

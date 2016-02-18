@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.startButton = new System.Windows.Forms.Button();
             this.passBox = new System.Windows.Forms.TextBox();
             this.loginBox = new System.Windows.Forms.TextBox();
@@ -42,16 +42,15 @@
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.settingsMenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkPosts = new System.Windows.Forms.Timer(this.components);
             this.sendStatistics = new System.Windows.Forms.Timer(this.components);
             this.tabs = new System.Windows.Forms.TabControl();
             this.mainPage = new System.Windows.Forms.TabPage();
             this.ratingPage = new System.Windows.Forms.TabPage();
-            this.loadingLabel = new System.Windows.Forms.Label();
             this.ratingGrid = new System.Windows.Forms.DataGridView();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loadingLabel = new System.Windows.Forms.Label();
             this.userSideLabel = new System.Windows.Forms.Label();
             this.userSideTextLabel = new System.Windows.Forms.Label();
             this.timeTimer = new System.Windows.Forms.Timer(this.components);
@@ -148,11 +147,6 @@
             this.aboutMenuItem.Text = "О программе";
             this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
-            // checkPosts
-            // 
-            this.checkPosts.Interval = 3000;
-            this.checkPosts.Tick += new System.EventHandler(this.checkPosts_Tick);
-            // 
             // sendStatistics
             // 
             this.sendStatistics.Interval = 50000;
@@ -195,16 +189,6 @@
             this.ratingPage.Enter += new System.EventHandler(this.tabPage2_Enter);
             this.ratingPage.Leave += new System.EventHandler(this.tabPage2_Leave);
             // 
-            // loadingLabel
-            // 
-            this.loadingLabel.AutoSize = true;
-            this.loadingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loadingLabel.Location = new System.Drawing.Point(101, 73);
-            this.loadingLabel.Name = "loadingLabel";
-            this.loadingLabel.Size = new System.Drawing.Size(195, 24);
-            this.loadingLabel.TabIndex = 0;
-            this.loadingLabel.Text = "Загрузка рейтинга...";
-            // 
             // ratingGrid
             // 
             this.ratingGrid.AllowUserToAddRows = false;
@@ -220,14 +204,14 @@
             this.number,
             this.username,
             this.votes});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ratingGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.ratingGrid.Location = new System.Drawing.Point(-4, 0);
             this.ratingGrid.Name = "ratingGrid";
             this.ratingGrid.ReadOnly = true;
@@ -262,6 +246,16 @@
             this.votes.HeaderText = "Оценок";
             this.votes.Name = "votes";
             this.votes.ReadOnly = true;
+            // 
+            // loadingLabel
+            // 
+            this.loadingLabel.AutoSize = true;
+            this.loadingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loadingLabel.Location = new System.Drawing.Point(101, 73);
+            this.loadingLabel.Name = "loadingLabel";
+            this.loadingLabel.Size = new System.Drawing.Size(195, 24);
+            this.loadingLabel.TabIndex = 0;
+            this.loadingLabel.Text = "Загрузка рейтинга...";
             // 
             // userSideLabel
             // 
@@ -347,7 +341,6 @@
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem settingsMenuitem;
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
-        private System.Windows.Forms.Timer checkPosts;
         private System.Windows.Forms.Timer sendStatistics;
         private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage mainPage;

@@ -195,7 +195,6 @@ namespace PikabuInvaders
                     // Выбираем первый пост из свежего
                     // Так мы запомним откуда минусовать
                     var lastPost = Convert.ToInt32(doc.DocumentNode.SelectNodes("//a[contains(@class,'b-story__link')]").First().Attributes[2].Value);
-                    Properties.Settings.Default.firstPost = Properties.Settings.Default.lastPost = lastPost;
                     Properties.Settings.Default.firstRun = false;
                 }
 
@@ -218,7 +217,6 @@ namespace PikabuInvaders
                 stopwatch.Reset();
                 stopwatch.Start();
 
-                if (Properties.Settings.Default.lastCheckedPost < Properties.Settings.Default.firstPost) checkPosts.Start();
                 if (Properties.Settings.Default.sendStatistics) sendStatistics.Start();
                 checkNewPosts.Start();
                 timeTimer.Start();
@@ -229,7 +227,6 @@ namespace PikabuInvaders
 
         private void stop()
         {
-            checkPosts.Stop();
             checkNewPosts.Stop();
             sendStatistics.Stop();
             timeTimer.Stop();
@@ -243,29 +240,8 @@ namespace PikabuInvaders
             logData("Программа остановлена.");
         }
 
-        private void checkPosts_Tick(object sender, EventArgs e)
-        {
-            var postNumber = Properties.Settings.Default.lastCheckedPost;
-
-            if (userSide == "good")
-            {
-                sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=%2B");
-                logData("Посту №" + postNumber + " поставлен +");
-            }
-            else
-            {
-                sendPostRequest("http://pikabu.ru/ajax/dig.php", "i=" + postNumber + "&type=-");
-                logData("Посту №" + postNumber + " поставлен -");
-            }
-
-            Properties.Settings.Default.lastCheckedPost = postNumber + 1;
-            Properties.Settings.Default.Save();
-        }
-
         private void checkNewPosts_Tick(object sender, EventArgs e)
         {
-            checkPosts.Stop();
-
             logData("Проверяем наличие новых постов...");
 
             int postNumber = 0;
@@ -302,8 +278,6 @@ namespace PikabuInvaders
             {
                 logData("Нет новых постов. Ждём, когда они появятся.");
             }
-
-            checkPosts.Start();
         }
 
         private void sendStatistics_Tick(object sender, EventArgs e)

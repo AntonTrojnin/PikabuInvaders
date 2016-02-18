@@ -26,9 +26,6 @@
     <Setting Name="lastPost" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="lastCheckedPost" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3500000</Value>
-    </Setting>
     <Setting Name="firstPost" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
