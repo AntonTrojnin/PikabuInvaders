@@ -169,7 +169,7 @@ namespace PikabuInvaders
 
             if (data.result == false)
             {
-                logData(data.message);
+                logData("Ошибка авторизации. Проверьте правильность логина и пароля.");
                 stop();
             }
             else
